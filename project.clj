@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [stasis "2.2.2"]
                  [ring "1.3.2"]
+                 [optimus "0.17.1"]
                  [hiccup "1.0.5"]]
   :plugins [[lein-ring "0.9.3"]]
   :ring {:handler pict-source.core/server})
