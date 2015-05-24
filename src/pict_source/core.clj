@@ -15,11 +15,12 @@
 (defn public-assets []
   (assets/load-bundle "assets/css"
                       "style.css"
-                      ["/main.css"]))
+                      ["/normalize.css" "/skeleton.css" "/main.css"]))
 
 (def public-pages {"/" index})
 
 (def server (-> (stasis/serve-pages public-pages)
-                (optimus/wrap public-assets assets-optimizations/all assets-strategies/serve-live-assets)
+                (optimus/wrap
+                  public-assets assets-optimizations/all assets-strategies/serve-live-assets)
                 ring.middleware.content-type/wrap-content-type
                 ring.middleware.not-modified/wrap-not-modified))
