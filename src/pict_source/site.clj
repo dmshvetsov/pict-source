@@ -2,7 +2,7 @@
   (:require [hiccup.page :refer [html5]]
             [optimus.html]))
 
-(def title "Pict - The open programmers dictionary")
+(def title "Pict")
 
 (defn layout [req content]
   (html5
@@ -12,5 +12,13 @@
      [:title title]
      (optimus.html/link-to-css-bundles req ["style.css"])]
     [:body
-     [:h1 title]
-     [:div content]]))
+     [:div {:class "container"}
+      [:header {:class "row"}
+       [:div {:class "six columns logo"} title]
+       [:div {:class "six columns"}
+        [:nav
+         [:a {:href "#"} "ru"]
+         [:a {:href "#"} "en"]]]]
+      content
+      [:footer {:class "row"}
+       [:p "автор" [:a {:href "http://shvetsovdm.github.io"} "Дмитрий Швецов (shvetsovdm)"]]]]]))

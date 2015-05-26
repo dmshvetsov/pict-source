@@ -5,12 +5,14 @@
             [optimus.optimizations :as assets-optimizations]
             [optimus.strategies :as assets-strategies]
             [pict-source.site :as site]
+            [pict-source.index :as index]
             [stasis.core :as stasis])
-  (use [ring.middleware.content-type]
+  (use [hiccup.core]
+       [ring.middleware.content-type]
        [ring.middleware.not-modified]))
 
 (defn index [req]
-  (site/layout req (slurp (io/resource "index.html"))))
+  (site/layout req (html (index/page))))
 
 (defn public-assets []
   (assets/load-bundle "assets/css"

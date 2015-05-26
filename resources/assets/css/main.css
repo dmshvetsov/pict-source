@@ -1,0 +1,24 @@
+body {
+  padding: 24px 0px 0px 0px;
+}
+header {
+  margin-bottom: 24px;
+}
+.logo {
+  font-size: 3.8rem;
+}
+nav {
+  height: 60px;
+  line-height: 60px;
+}
+nav a {
+  font-size: 2.4rem;
+  margin-right: 24px;
+  text-decoration: none;
+}
+nav a:last-child {
+  margin-right: 0px;
+}
+nav a:hover {
+  border-bottom: 2px solid;
+}
