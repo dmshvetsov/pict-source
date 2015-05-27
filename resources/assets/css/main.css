@@ -1,11 +1,9 @@
 body {
+  font-size: 1.8em;
   padding: 24px 0px 0px 0px;
 }
 header {
   margin-bottom: 24px;
-}
-.logo {
-  font-size: 3.8rem;
 }
 nav {
   height: 60px;
@@ -21,4 +19,16 @@ nav a:last-child {
 }
 nav a:hover {
   border-bottom: 2px solid;
+}
+.content {
+  margin-bottom: 48px;
+}
+.content p:last-child {
+  margin-bottom: 0px;
+}
+.pictionary--word  {
+  height: 24px;
+}
+.pictionary--letter h2 {
+  margin-bottom: 0px;
 }

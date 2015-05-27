@@ -14,7 +14,8 @@
     [:body
      [:div {:class "container"}
       [:header {:class "row"}
-       [:div {:class "six columns logo"} title]
+       [:div {:class "six columns"} 
+        [:h1 title]]
        [:div {:class "six columns"}
         [:nav
          [:a {:href "#"} "ru"]

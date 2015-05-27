@@ -6,6 +6,7 @@
             [optimus.strategies :as assets-strategies]
             [pict-source.site :as site]
             [pict-source.index :as index]
+            [pict-source.lang :as lang]
             [stasis.core :as stasis])
   (use [hiccup.core]
        [ring.middleware.content-type]
@@ -14,12 +15,15 @@
 (defn index [req]
   (site/layout req (html (index/page))))
 
+(defn lang [req]
+  (site/layout req (html (lang/page))))
+
 (defn public-assets []
   (assets/load-bundle "assets/css"
                       "style.css"
                       ["/normalize.css" "/skeleton.css" "/main.css"]))
 
-(def public-pages {"/" index})
+(def public-pages {"/" index "/lang/" lang})
 
 (def server (-> (stasis/serve-pages public-pages)
                 (optimus/wrap
