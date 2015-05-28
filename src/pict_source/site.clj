@@ -22,4 +22,6 @@
          [:a {:href "#"} "en"]]]]
       content
       [:footer {:class "row"}
-       [:p "автор" [:a {:href "http://shvetsovdm.github.io"} "Дмитрий Швецов (shvetsovdm)"]]]]]))
+       [:p 
+        "&copy; 2015 "
+        [:a {:href "http://shvetsovdm.github.io"} "Дмитрий Швецов (shvetsovdm)"]]]]]))
