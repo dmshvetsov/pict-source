@@ -9,4 +9,5 @@
                  [optimus "0.17.1"]
                  [hiccup "1.0.5"]]
   :plugins [[lein-ring "0.9.3"]]
+  :aliases {"build" ["run" "-m" "pict-source.core/build"]}
   :ring {:handler pict-source.core/server})
