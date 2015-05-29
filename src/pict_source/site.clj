@@ -18,10 +18,11 @@
         [:h1 title]]
        [:div {:class "six columns"}
         [:nav
-         [:a {:href "#"} "ru"]
-         [:a {:href "#"} "en"]]]]
+         [:a {:href "/lang/"} "ru"]
+         [:a {:href "/lang/"} "en"]]]]
       content
       [:footer {:class "row"}
        [:p 
         "&copy; 2015 "
-        [:a {:href "http://shvetsovdm.github.io"} "Дмитрий Швецов (shvetsovdm)"]]]]]))
+        [:a {:href "http://shvetsovdm.github.io"}
+         "Дмитрий Швецов/Dmitry Shvetsov (shvetsovdm)"]]]]]))
