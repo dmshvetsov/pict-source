@@ -5,6 +5,15 @@ body {
 header {
   margin-bottom: 24px;
 }
+.logo--link {
+  color: #000;
+  text-decoration: none;
+}
+.slogan {
+  position: relative;
+  top: -24px;
+  left: 60px;
+}
 nav {
   height: 60px;
   line-height: 60px;

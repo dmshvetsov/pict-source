@@ -3,6 +3,7 @@
             [optimus.html]))
 
 (def title "Pict")
+(def slogan "открытый словарь программистов")
 
 (defn layout [req content]
   (html5
@@ -15,7 +16,9 @@
      [:div {:class "container"}
       [:header {:class "row"}
        [:div {:class "six columns"} 
-        [:h1 title]]
+        [:h1
+         [:a {:href "/" :class "logo--link"} title]]
+        [:div {:class "slogan"} (str "\\ " slogan)]]
        [:div {:class "six columns"}
         [:nav
          [:a {:href "/lang/"} "ru"]
