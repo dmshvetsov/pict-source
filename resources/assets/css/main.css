@@ -1,18 +1,27 @@
 body {
-  font-size: 1.8em;
+  font-family: Palatino Linotype, serif;
+  font-size: 2em;
   padding: 24px 0px 0px 0px;
+  background-color: #fcfcfc;
+  color: #666;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
 }
 header {
-  margin-bottom: 24px;
+  margin-bottom: 48px;
+}
+header h1 {
+  margin-bottom: 0px;
+  font-weight: bold;
 }
 .logo--link {
-  color: #000;
+  color: #333;
   text-decoration: none;
 }
 .slogan {
-  position: relative;
-  top: -24px;
-  left: 60px;
+  margin-top: -12px;
+  margin-left: 48px;
 }
 nav {
   height: 60px;
@@ -20,6 +29,7 @@ nav {
 }
 nav a {
   font-size: 2.4rem;
+  font-weight: bold;
   margin-right: 24px;
   text-decoration: none;
 }
@@ -27,7 +37,7 @@ nav a:last-child {
   margin-right: 0px;
 }
 nav a:hover {
-  border-bottom: 2px solid;
+  border-bottom: 3px solid #0FA0CE;
 }
 .content {
   margin-bottom: 48px;

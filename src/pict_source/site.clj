@@ -18,7 +18,7 @@
        [:div {:class "six columns"} 
         [:h1
          [:a {:href "/" :class "logo--link"} title]]
-        [:div {:class "slogan"} (str "\\ " slogan)]]
+        [:div {:class "slogan"} (str "/ " slogan)]]
        [:div {:class "six columns"}
         [:nav
          [:a {:href "/lang/"} "ru"]
@@ -28,4 +28,4 @@
        [:p 
         "&copy; 2015 "
         [:a {:href "http://shvetsovdm.github.io"}
-         "Дмитрий Швецов/Dmitry Shvetsov (shvetsovdm)"]]]]]))
+         "Дмитрий Швецов / Dmitry Shvetsov (shvetsovdm)"]]]]]))
