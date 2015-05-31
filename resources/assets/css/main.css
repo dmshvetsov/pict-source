@@ -24,14 +24,22 @@ form {
   margin-bottom: 1.5em;
 }
 h1, h2, h3, h4, h5, h6 {
+  color: #4a4a4a;
+  letter-spacing: normal;
+  line-height: 6rem;
+}
+h1, h2 {
   color: #333;
+  margin-bottom: 3rem;
 }
 header {
   margin-bottom: 3em;
 }
 header h1 {
+  color: #333;
   margin-bottom: 0px;
   font-weight: bold;
+  line-height: 60px;
 }
 .logo--link {
   color: #333;
