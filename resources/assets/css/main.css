@@ -1,15 +1,33 @@
 body {
   font-family: Palatino Linotype, serif;
   font-size: 2em;
+  line-height: 1.5em;
   padding: 24px 0px 0px 0px;
   background-color: #fcfcfc;
   color: #666;
+}
+button,
+.button,
+input,
+textarea,
+select,
+fieldset,
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 1.5em;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 header {
-  margin-bottom: 48px;
+  margin-bottom: 3em;
 }
 header h1 {
   margin-bottom: 0px;
@@ -46,7 +64,7 @@ nav a:hover {
   border-bottom: 3px solid #0FA0CE;
 }
 .content {
-  margin-bottom: 48px;
+  margin-bottom: 3em;
 }
 .pictionary--word  {
   height: 24px;
