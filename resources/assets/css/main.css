@@ -20,8 +20,14 @@ header h1 {
   text-decoration: none;
 }
 .slogan {
-  margin-top: -12px;
+  margin-top: -6px;
   margin-left: 48px;
+  line-height: 1.2em;
+}
+.slogan:before {
+  content: "/";
+  margin-left: -12px;
+  margin-right: 6px;
 }
 nav {
   height: 60px;
@@ -47,4 +53,7 @@ nav a:hover {
 }
 .pictionary--letter h2 {
   margin-bottom: 0px;
+}
+.copyright {
+  line-height: 1.2em;
 }
