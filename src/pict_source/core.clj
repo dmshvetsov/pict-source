@@ -6,8 +6,9 @@
             [optimus.optimizations :as assets-optimizations]
             [optimus.strategies :as assets-strategies]
             [pict-source.site :as site]
-            [pict-source.index :as index]
-            [pict-source.lang :as lang]
+            [pict-source.index]
+            [pict-source.lang]
+            [pict-source.error]
             [stasis.core :as stasis])
   (use [hiccup.core]
        [ring.middleware.content-type]
@@ -16,17 +17,20 @@
 (def export-dir "pict")
 
 (defn index [req]
-  (site/layout req (html (index/page))))
+  (site/layout req (html (pict-source.index/page))))
 
 (defn lang [req]
-  (site/layout req (html (lang/page))))
+  (site/layout req (html (pict-source.lang/page))))
+
+(defn error [req]
+  (site/layout req (html (pict-source.error/page))))
 
 (defn public-assets []
   (assets/load-bundle "assets/css"
                       "style.css"
                       ["/normalize.css" "/skeleton.css" "/main.css"]))
 
-(def public-pages {"/" index "/lang/" lang})
+(def public-pages {"/" index "/lang/" lang "/error/" error})
 
 (defn build-assets [assets]
   (as-> assets a
