@@ -1,0 +1,6 @@
+{
+  "name": "pict",
+  "root": "./",
+  "clean_urls": true,
+  "error_page": "error/index.html"
+}

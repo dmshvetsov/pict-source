@@ -14,7 +14,7 @@
        [ring.middleware.content-type]
        [ring.middleware.not-modified]))
 
-(def export-dir "pict")
+(def export-dir "builds")
 
 (defn index [req]
   (site/layout req (html (pict-source.index/page))))
@@ -38,11 +38,15 @@
       (remove :outdated a)
       (optimus.export/save-assets a export-dir)))
 
+(defn add-config-to-build []
+  (io/copy (io/file "resources/config/divshot.json") (io/file "builds/divshot.json")))
+
 (defn build []
   (let [optimized-assets (assets-optimizations/all (public-assets) {})]
     (stasis/empty-directory! export-dir)
     (build-assets optimized-assets)
-    (stasis/export-pages public-pages export-dir {:optimus-assets optimized-assets})))
+    (stasis/export-pages public-pages export-dir {:optimus-assets optimized-assets})
+    (add-config-to-build)))
 
 (def server (-> (stasis/serve-pages public-pages)
                 (optimus/wrap
