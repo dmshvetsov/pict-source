@@ -24,13 +24,16 @@ form {
   margin-bottom: 1.5em;
 }
 h1, h2, h3, h4, h5, h6 {
-  color: #4a4a4a;
   letter-spacing: normal;
-  line-height: 6rem;
+  line-height: 1em;
 }
 h1, h2 {
   color: #333;
   margin-bottom: 3rem;
+}
+h3, h4, h5, h6 {
+  color: #4a4a4a;
+  margin-bottom: 1rem;
 }
 header {
   margin-bottom: 3em;
