@@ -3,9 +3,9 @@
             [pict-source.dictionary :as dictionary]))
 
 (defn page []
-  (let [lang-map (dictionary/lang-map "ru")]
+  (let [words-map (dictionary/words-map "ru")]
     [:div {:class "content"}
-     (for [words-by-letter lang-map]
+     (for [words-by-letter words-map]
        (list
         [:div {:class "row"}
          [:div {:class "twelve columns pictionary--letter"}

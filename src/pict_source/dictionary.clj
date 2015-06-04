@@ -10,7 +10,7 @@
   (filter #(and (.isFile %) (re-find #"\.json$" (.getName %))) files-seq))
 
 (defn- only-lang [lang files-seq]
-  (filter #(= lang (nth (reverse (string/split (.getName %) #"/")) 2)) files-seq))
+  (filter #(-> % .getPath (string/split #"/") reverse (nth 2) (= lang)) files-seq))
 
 (defn- first-letter [word-file]
   (first (.getName word-file)))
@@ -27,10 +27,5 @@
 (defn- group-by-letter [words-seq]
   (group-by :letter words-seq))
 
-(defn lang-map [lang]
-  (->> dictionary-seq
-      only-json
-      ;; FIXME
-      ;; only-lang lang
-      parse-files
-      group-by-letter))
+(defn words-map [lang]
+  (group-by-letter (parse-files (only-lang lang (only-json dictionary-seq)))))
