@@ -32,8 +32,9 @@
         [:div {:class "slogan"} slogan]]
        [:div {:class "six columns"}
         [:nav
-         [:a {:href "/lang/"} "ru"]
-         [:a {:href "/lang/"} "en"]]]]
+         [:a {:href "/ru/"} "ru"]
+         [:a {:href "/ja/"} "ja"]
+         [:a {:href "/zh/"} "zh"]]]]
       content
       [:footer {:class "row"}
        [:p {:class "copyright"}
