@@ -9,6 +9,9 @@
 (defn- only-json [files-seq]
   (filter #(and (.isFile %) (re-find #"\.json$" (.getName %))) files-seq))
 
+(defn- only-dir [files-seq]
+  (filter #(.isDirectory %) files-seq))
+
 (defn- only-lang [lang files-seq]
   (filter #(-> % .getPath (string/split #"/") reverse (nth 2) (= lang)) files-seq))
 
@@ -29,3 +32,6 @@
 
 (defn words-map [lang]
   (group-by-letter (parse-files (only-lang lang (only-json dictionary-seq)))))
+
+(defn langs-available []
+  (map #(.getName %) (only-dir (.listFiles (io/file source-dir)))))

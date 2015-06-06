@@ -1,6 +1,7 @@
 (ns pict-source.site
   (:require [hiccup.page :refer [html5]]
-            [optimus.html]))
+            [optimus.html]
+            [pict-source.dictionary :as dictionary]))
 
 (def title "Pict")
 (def slogan "открытый словарь программистов")
@@ -32,9 +33,8 @@
         [:div {:class "slogan"} slogan]]
        [:div {:class "six columns"}
         [:nav
-         [:a {:href "/ru/"} "ru"]
-         [:a {:href "/ja/"} "ja"]
-         [:a {:href "/zh/"} "zh"]]]]
+         (for [lang (dictionary/langs-available)]
+           [:a {:href (str "/" lang "/")} lang])]]]
       content
       [:footer {:class "row"}
        [:p {:class "copyright"}

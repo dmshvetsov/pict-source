@@ -27,7 +27,7 @@
   (reduce
     (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
     {}
-    ["ru" "zh" "ja"]))
+    (dictionary/langs-available)))
 
 (defn error [req]
   (site/layout req (html (pict-source.error/page))))
