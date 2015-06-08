@@ -48,15 +48,12 @@
         [:h1
          [:a {:href "/" :class "logo--link"} title]]
         [:div {:class "slogan"} slogan]]
-       [:div {:class "six columns"}
-        [:nav
-         (for [lang (dictionary/langs-available)]
-           [:a {:href (str "/" lang "/")} lang])]]]
+       [:div {:class "six columns"}]]
       content
       [:footer {:class "row"}
        [:div {:class "social-buttons"} twitter-share-button]
        [:p {:class "copyright"}
         "&copy; 2015 "
         [:a {:href "http://shvetsovdm.github.io"}
-         "Дмитрий Швецов / Dmitry Shvetsov (shvetsovdm)"]]]]
+         "Dmitry Shvetsov (shvetsovdm)"]]]]
      google-analytics-code]))

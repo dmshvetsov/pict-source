@@ -58,22 +58,6 @@ header h1 {
   margin-left: -12px;
   margin-right: 6px;
 }
-nav {
-  height: 60px;
-  line-height: 60px;
-}
-nav a {
-  font-size: 2.4rem;
-  font-weight: bold;
-  margin-right: 24px;
-  text-decoration: none;
-}
-nav a:last-child {
-  margin-right: 0px;
-}
-nav a:hover {
-  border-bottom: 3px solid #0FA0CE;
-}
 .content {
   margin-bottom: 3em;
 }
