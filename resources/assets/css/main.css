@@ -83,6 +83,14 @@ nav a:hover {
 .pictionary--letter h2 {
   margin-bottom: 0px;
 }
+.social-buttons {
+  height: 1.5em;
+  margin-bottom: 1.5em;
+  color: transparent;
+}
+.social-buttons a {
+  color: transparent;
+}
 .copyright {
   line-height: 1.2em;
 }

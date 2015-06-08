@@ -54,7 +54,7 @@
            [:a {:href (str "/" lang "/")} lang])]]]
       content
       [:footer {:class "row"}
-       [:p twitter-share-button]
+       [:div {:class "social-buttons"} twitter-share-button]
        [:p {:class "copyright"}
         "&copy; 2015 "
         [:a {:href "http://shvetsovdm.github.io"}
