@@ -18,7 +18,8 @@
 (def export-dir "builds")
 
 (defn index [req]
-  (site/layout req (html (pict-source.index/page))))
+  (let [dictionaries (dictionary/langs-sorted-by-words-count)]
+   (site/layout req (html (pict-source.index/page dictionaries)))))
 
 (defn lang [param-lang req]
   (site/layout req (html (pict-source.lang/page (dictionary/words-map param-lang)))))

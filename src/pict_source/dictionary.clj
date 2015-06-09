@@ -30,8 +30,17 @@
 (defn- group-by-letter [words-seq]
   (group-by :letter words-seq))
 
+(defn lang-seq [lang]
+  (only-lang lang (only-json dictionary-seq)))
+
 (defn words-map [lang]
-  (group-by-letter (parse-files (only-lang lang (only-json dictionary-seq)))))
+  (group-by-letter (parse-files (lang-seq lang))))
 
 (defn langs-available []
   (map #(.getName %) (only-dir (.listFiles (io/file source-dir)))))
+
+(defn langs-sorted-by-words-count []
+  (reverse
+    (sort-by :words-count
+             (map #(hash-map :lang % :words-count (count (lang-seq %)))
+                  (langs-available)))))
