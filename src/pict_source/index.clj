@@ -8,5 +8,5 @@
       [:div {:class "four columns"}
        [:h2
         [:a {:href (str "/" (:lang dict) "/")} (:lang dict)]]
-       [:p "Description not available"]
+       [:p (:description dict)]
        [:p (str (:words-count dict) " words")]])]])

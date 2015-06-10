@@ -33,6 +33,11 @@
 (defn lang-seq [lang]
   (only-lang lang (only-json dictionary-seq)))
 
+(defn lang-data [lang]
+  (try
+    (parse-stream (io/reader (io/file (str source-dir "/" lang ".json"))) true)
+    (catch java.io.FileNotFoundException e (hash-map))))
+
 (defn words-map [lang]
   (group-by-letter (parse-files (lang-seq lang))))
 
@@ -42,5 +47,8 @@
 (defn langs-sorted-by-words-count []
   (reverse
     (sort-by :words-count
-             (map #(hash-map :lang % :words-count (count (lang-seq %)))
+             (map #(hash-map
+                     :lang %
+                     :words-count (count (lang-seq %))
+                     :description (:description (lang-data %)))
                   (langs-available)))))
