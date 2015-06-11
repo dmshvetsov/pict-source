@@ -3,10 +3,11 @@
 
 (defn page [dictionaries]
   [:div {:class "content"} 
-   [:div {:class "row"}
-    (for [dict dictionaries]
+   (for [dict-row (partition-all 3 dictionaries)]
+     [:div {:class "row"}
+      (for [dict dict-row]
       [:div {:class "four columns"}
        [:h2
         [:a {:href (str "/" (:lang dict) "/")} (:lang dict)]]
        [:p (:description dict)]
-       [:p (str (:words-count dict) " words")]])]])
+       [:p (str (:words-count dict) " words")]])])])
