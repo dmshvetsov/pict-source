@@ -58,8 +58,23 @@
     (stasis/export-pages public-pages export-dir {:optimus-assets optimized-assets})
     (add-config-to-build)))
 
+(defn wrap-utf-8
+  "This function works around the fact that Ring simply chooses the default JVM
+  encoding for the response encoding. This is not desirable, we always want to
+  send UTF-8.
+  https://github.com/cjohansen/cjohansen-no/blob/master/src/cjohansen_no/web.clj#L16"
+  [handler]
+  (fn [request]
+    (when-let [response (handler request)]
+      (if (.contains (get-in response [:headers "Content-Type"]) ";")
+        response
+        (if (string? (:body response))
+          (update-in response [:headers "Content-Type"] #(str % "; charset=utf-8"))
+          response)))))
+
 (def server (-> (stasis/serve-pages public-pages)
                 (optimus/wrap
                   public-assets assets-optimizations/all assets-strategies/serve-live-assets)
                 ring.middleware.content-type/wrap-content-type
-                ring.middleware.not-modified/wrap-not-modified))
+                ring.middleware.not-modified/wrap-not-modified
+                wrap-utf-8))
