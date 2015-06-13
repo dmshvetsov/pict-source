@@ -5,6 +5,7 @@
             [optimus.export]
             [optimus.optimizations :as assets-optimizations]
             [optimus.strategies :as assets-strategies]
+            [pict-source.config :as config]
             [pict-source.site :as site]
             [pict-source.index]
             [pict-source.dictionary :as dictionary]
@@ -19,10 +20,16 @@
 
 (defn index [req]
   (let [dictionaries (dictionary/langs-sorted-by-words-count)]
-   (site/layout req (html (pict-source.index/page dictionaries)))))
+    (site/layout req
+                 config/site-name
+                 config/site-title
+                 (html (pict-source.index/page dictionaries)))))
 
 (defn lang [param-lang req]
-  (site/layout req (html (pict-source.lang/page (dictionary/words-map param-lang)))))
+  (site/layout req
+               config/site-name
+               (:title (dictionary/lang-data param-lang))
+               (html (pict-source.lang/page (dictionary/words-map param-lang)))))
 
 (defn lang-routes []
   (reduce
@@ -31,7 +38,10 @@
     (dictionary/langs-available)))
 
 (defn error [req]
-  (site/layout req (html (pict-source.error/page))))
+  (site/layout req
+              config/site-name
+              "Ошибка"
+              (html (pict-source.error/page))))
 
 (defn public-assets []
   (assets/load-bundle "assets/css"

@@ -3,10 +3,6 @@
             [optimus.html]
             [pict-source.dictionary :as dictionary]))
 
-(def title "Pict")
-
-(def slogan "открытый словарь программистов")
-
 (def google-analytics-code
   "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -34,20 +30,20 @@
     }}(document, 'script', 'twitter-wjs');
   </script>")
 
-(defn layout [req content]
+(defn layout [req title page-title-suffix content]
   (html5
     [:head
      [:meta {:charset "UTF-8"}]
      [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
-     [:title title]
+     [:title (str title " - " page-title-suffix)]
      (optimus.html/link-to-css-bundles req ["style.css"])]
     [:body
      [:div {:class "container"}
       [:header {:class "row"}
-       [:div {:class "six columns"} 
-        [:h1
-         [:a {:href "/" :class "logo--link"} title]]
-        [:div {:class "slogan"} slogan]]
+       [:div {:class "twelve columns"}
+        [:a {:href "/" :class "logo--link"} title]
+        [:div {:class "slogan"}
+         [:h1 page-title-suffix]]]
        [:div {:class "six columns"}]]
       content
       [:footer {:class "row"}
