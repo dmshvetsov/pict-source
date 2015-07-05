@@ -6,28 +6,28 @@
 (def source-dir "resources/dictionary")
 (def dictionary-seq (file-seq (io/file source-dir)))
 
-(defn- only-json [files-seq]
+(defn only-json [files-seq]
   (filter #(and (.isFile %) (re-find #"\.json$" (.getName %))) files-seq))
 
-(defn- only-dir [files-seq]
+(defn only-dir [files-seq]
   (filter #(.isDirectory %) files-seq))
 
-(defn- only-lang [lang files-seq]
+(defn only-lang [lang files-seq]
   (filter #(-> % .getPath (string/split #"/") reverse (nth 2) (= lang)) files-seq))
 
-(defn- first-letter [word-file]
+(defn first-letter [word-file]
   (first (.getName word-file)))
 
-(defn- read-word [word-file]
+(defn read-word [word-file]
   (parse-stream (io/reader word-file) true))
 
-(defn- parse-files [files-seq]
+(defn parse-files [files-seq]
   (map #(into
           {:letter (string/capitalize (first-letter %))
            :word (string/capitalize (string/replace (.getName %) #"\.json" ""))}
           (read-word %)) files-seq))
 
-(defn- group-by-letter [words-seq]
+(defn group-by-letter [words-seq]
   (group-by :letter words-seq))
 
 (defn lang-seq [lang]
