@@ -1,5 +1,5 @@
-(defproject pict-source "0.0.1-SNAPSHOT"
-  :description "Open multy language programming(er) dictionary."
+(defproject pict-source "0.0.1"
+  :description "Open multy language programming(ers) dictionary."
   :url "http://pict.github.io"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

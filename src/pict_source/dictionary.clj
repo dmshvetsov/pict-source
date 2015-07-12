@@ -3,6 +3,10 @@
             [clojure.string :as string]
             [cheshire.core :refer :all]))
 
+;;;;  Dictionary functions
+;;;;  to operate with dictionaries data
+;;;;  defined in source directory
+
 (def source-dir "resources/dictionary")
 (def dictionary-seq (file-seq (io/file source-dir)))
 

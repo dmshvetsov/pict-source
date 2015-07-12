@@ -1,6 +1,8 @@
 (ns pict-source.lang
   (:require [hiccup.page :refer [html5]]))
 
+;;;; Language dictionary page template
+
 (defn page [words-map]
   [:div {:class "content"}
    (for [words-by-letter words-map]

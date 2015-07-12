@@ -1,6 +1,8 @@
 (ns pict-source.index
   (:require [hiccup.page :refer [html5]]))
 
+;;;; Index page template
+
 (defn page [dictionaries]
   [:div {:class "content"} 
    (for [dict-row (partition-all 3 dictionaries)]

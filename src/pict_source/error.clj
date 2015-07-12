@@ -1,6 +1,8 @@
 (ns pict-source.error
   (:require [hiccup.page :refer [html5]]))
 
+;;;; Error page template
+
 (def message
   "Страница которую вы ищете не найдена.
   Возможно вы ошиблись и страницы не существует.

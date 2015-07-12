@@ -16,7 +16,13 @@
        [ring.middleware.content-type]
        [ring.middleware.not-modified]))
 
+;;;; Core functionality
+
+;;; Vars
+
 (def export-dir "builds")
+
+;;; Pages
 
 (defn index [req]
   (let [dictionaries (dictionary/langs-sorted-by-words-count)]
@@ -30,12 +36,6 @@
                config/site-name
                (:title (dictionary/lang-data param-lang))
                (html (pict-source.lang/page (dictionary/words-map param-lang)))))
-
-(defn lang-routes []
-  (reduce
-    (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
-    {}
-    (dictionary/langs-available)))
 
 (defn error [req]
   (site/layout req
@@ -52,6 +52,14 @@
                     {"/" index "/error/" error}
                     (lang-routes)))
 
+;;; Site builder
+
+(defn lang-routes []
+  (reduce
+    (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
+    {}
+    (dictionary/langs-available)))
+
 (defn build-assets [assets]
   (as-> assets a
       (remove :bundled a)
@@ -67,6 +75,8 @@
     (build-assets optimized-assets)
     (stasis/export-pages public-pages export-dir {:optimus-assets optimized-assets})
     (add-config-to-build)))
+
+;;; Development server
 
 (defn wrap-utf-8
   "This function works around the fact that Ring simply chooses the default JVM

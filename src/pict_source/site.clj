@@ -3,6 +3,8 @@
             [optimus.html]
             [pict-source.dictionary :as dictionary]))
 
+;;;; Site layout template
+
 (def google-analytics-code
   "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
