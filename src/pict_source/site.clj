@@ -53,5 +53,5 @@
        [:p {:class "copyright"}
         "&copy; 2015 "
         [:a {:href "http://shvetsovdm.github.io"}
-         "Dmitry Shvetsov (shvetsovdm)"]]]]
+         "Dmitry Shvetsov (@shvetsovdm)"]]]]
      google-analytics-code]))
