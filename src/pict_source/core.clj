@@ -43,15 +43,6 @@
               "Ошибка"
               (html (pict-source.error/page))))
 
-(defn public-assets []
-  (assets/load-bundle "assets/css"
-                      "style.css"
-                      ["/normalize.css" "/skeleton.css" "/main.css"]))
-
-(def public-pages (merge
-                    {"/" index "/error/" error}
-                    (lang-routes)))
-
 ;;; Site builder
 
 (defn lang-routes []
@@ -59,6 +50,15 @@
     (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
     {}
     (dictionary/langs-available)))
+
+(def site-pages (merge
+                    {"/" index "/error/" error}
+                    (lang-routes)))
+
+(defn public-assets []
+  (assets/load-bundle "assets/css"
+                      "style.css"
+                      ["/normalize.css" "/skeleton.css" "/main.css"]))
 
 (defn build-assets [assets]
   (as-> assets a
@@ -73,7 +73,7 @@
   (let [optimized-assets (assets-optimizations/all (public-assets) {})]
     (stasis/empty-directory! export-dir)
     (build-assets optimized-assets)
-    (stasis/export-pages public-pages export-dir {:optimus-assets optimized-assets})
+    (stasis/export-pages site-pages export-dir {:optimus-assets optimized-assets})
     (add-config-to-build)))
 
 ;;; Development server
@@ -92,7 +92,7 @@
           (update-in response [:headers "Content-Type"] #(str % "; charset=utf-8"))
           response)))))
 
-(def server (-> (stasis/serve-pages public-pages)
+(def server (-> (stasis/serve-pages site-pages)
                 (optimus/wrap
                   public-assets assets-optimizations/all assets-strategies/serve-live-assets)
                 ring.middleware.content-type/wrap-content-type
