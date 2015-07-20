@@ -28,7 +28,7 @@
 (defn parse-files [files-seq]
   (map #(into
           {:letter (string/capitalize (first-letter %))
-           :word (string/capitalize (string/replace (.getName %) #"\.json" ""))}
+           :word (string/capitalize (string/replace (string/replace (.getName %) #"\.json" "") "_" " "))}
           (read-word %)) files-seq))
 
 (defn group-by-letter [words-seq]
