@@ -43,7 +43,7 @@
     (catch java.io.FileNotFoundException e (hash-map))))
 
 (defn words-map [lang]
-  (group-by-letter (parse-files (lang-seq lang))))
+  (sort (group-by-letter (parse-files (lang-seq lang)))))
 
 (defn langs-available []
   (map #(.getName %) (only-dir (.listFiles (io/file source-dir)))))
