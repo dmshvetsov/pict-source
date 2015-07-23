@@ -81,12 +81,9 @@ header h1 {
 .copyright {
   line-height: 1.2em;
 }
-
-@media (max-width: 550px) {
-  .pictionary--letter {
-    margin-top: 4rem;
-  }
-  .row:first-child .pictionary--letter {
-    margin-top: 0px;
-  }
+.pictionary--letter {
+  margin-top: 4rem;
+}
+.row:first-child .pictionary--letter {
+  margin-top: 0px;
 }
