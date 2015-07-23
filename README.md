@@ -6,6 +6,14 @@ The programmers open dictionary from programmers for culture of using your own s
 
 Just visit [http://pict.divshot.io](http://pict.divshot.io).
 
+### Localy
+
+1. Clone the repo
+2. `$ cd pict-source`
+3. Install dependencies `$ lein deps`
+4. Run tests `$ lein test`
+5. Run a web server `$ lein ring server` (it will open localhost:3000 in your browser)
+
 ## Contribution
 
 You can add new features or those [features that I would like to implement](https://github.com/shvetsovdm/pict-source#license),
