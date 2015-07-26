@@ -84,9 +84,10 @@
     (is (instance? (type {}) (lang-data "cadabra")))))
 
 (deftest describe-words-map
-  (testing "return a map"
-    (is (instance? (type {}) (words-map "ru"))))
-  (testing "return collection of words map grouped by a letter"))
+  (testing "return a array seq"
+    (is (instance? clojure.lang.ArraySeq (words-map "ru"))))
+  (testing "return collection of words map grouped by a letter")
+  (testing "return collection in alphabetic order"))
 
 (deftest describe-langs-available
   (testing "return a lazy sequence")

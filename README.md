@@ -34,6 +34,7 @@ How to contribute in general:
 
 ## Features that I would like to implement
 
+0. Improve design and testability of the code
 1. Logotype and website icons.
 2. Abbreviations and aliases for dictionary words.
 3. Made with (in the site footer) clojure, divshot, stasis and hiccup icons.
