@@ -5,6 +5,13 @@
 
 (defn page [dictionaries]
   [:div {:class "content"} 
+   [:div {:class "row"}
+    [:div {:class "twelve column"}
+     [:p
+      "The programmers open dictionary from programmers for culture of using your own spoken language."
+      " I highly encourage you to "
+      [:a {:href "https://github.com/shvetsovdm/pict-source"} "contribute to dictionaries and to the project"]
+      "."]]]
    (for [dict-row (partition-all 3 dictionaries)]
      [:div {:class "row"}
       (for [dict dict-row]
