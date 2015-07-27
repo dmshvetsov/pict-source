@@ -18,7 +18,7 @@
 (def twitter-share-button
   "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\"
     data-url=\"http://pict.divshot.io\"
-    data-text=\"Check this out: open, multi language programmers dictionary\">
+    data-text=\"Check this out: #pict the open, multi language programmers dictionary\">
       Tweet
   </a>
   <script>
