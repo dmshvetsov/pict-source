@@ -18,7 +18,7 @@
 (def twitter-share-button
   "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\"
     data-url=\"http://pict.divshot.io\"
-    data-text=\"Check this out: #pict the open, multi language programmers dictionary\">
+    data-text=\"Check this out: @pict_dictionary the open, multi language programmers dictionary\">
       Tweet
   </a>
   <script>
@@ -53,5 +53,5 @@
        [:p {:class "copyright"}
         "&copy; 2015 "
         [:a {:href "http://shvetsovdm.github.io"}
-         "Dmitry Shvetsov (@shvetsovdm)"]]]]
+         "Dmitry Shvetsov"]]]]
      google-analytics-code]))
