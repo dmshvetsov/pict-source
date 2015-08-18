@@ -18,7 +18,8 @@ Just visit [http://pict.divshot.io](http://pict.divshot.io).
 
 You can add new features or those [features that I would like to implement](https://github.com/shvetsovdm/pict-source#license),
 contribute to the project documentation, fix typos or contribyte to Languages Dictionary itself.
-To add new word you have to create new JSON file with following path `resources/dictionary/:language/:first-letter/:word.json`.
+To add new you can use shell script `.bin/pict :lang :word :translation` for example `./bin/pict ru code_review Обзор кода` in order to create word json file
+or you have to create new JSON file manually with following path `resources/dictionary/:language/:first-letter/:word.json`.
 
 Contribution process:
 

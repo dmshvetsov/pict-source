@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LANG=$1
+WORD=$2
+FIRST_LETTER="$(echo $WORD | head -c 1)"
+TRANSLATION=$3
+DICTIONARY_PATH=resources/dictionary/
+
+printf "{\n  \"translation\": \"$TRANSLATION\"\n}" > $DICTIONARY_PATH/$LANG/$FIRST_LETTER/$WORD.json
