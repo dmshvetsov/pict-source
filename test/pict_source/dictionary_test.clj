@@ -9,6 +9,9 @@
 (def test-file
   (io/file "test/support/data/dictionary/a_lang/a/a.json"))
 
+(def test-files
+  (io/file "test/support/data/dictionary"))
+
 (def test-lang-seq
   (seq [(io/file "test/support/data/dictionary/a_lang/a/a.json")
    (io/file "test/support/data/dictionary/a_lang/b/b.json")
@@ -89,11 +92,13 @@
   (testing "return collection of words map grouped by a letter")
   (testing "return collection in alphabetic order"))
 
-(deftest describe-langs-available
-  (testing "return a lazy sequence")
-  (testing "return collection of string"
-    (is (every? #(instance? String %) (langs-available))))
-  (testing "return collection of languages in the dictionary"))
+(deftest describe-dictionaries-available
+  (testing "return a lazy sequence"
+    (is (instance? clojure.lang.LazySeq (dictionaries-available test-files))))
+  (testing "return collection of strings"
+    (is (every? #(instance? String %) (dictionaries-available test-files))))
+  (testing "return collection of languages in the dictionary"
+    (is (= ["a_folder" "a_lang"] (dictionaries-available test-files)))))
 
 (deftest describe-langs-sorted-by-words-count
   (testing "return collection of langs data")
