@@ -45,8 +45,8 @@
 (defn words-map [lang]
   (sort (group-by-letter (parse-files (lang-seq lang)))))
 
-(defn langs-available []
-  (map #(.getName %) (only-dir (.listFiles (io/file source-dir)))))
+(defn dictionaries-available [source-files]
+  (map #(.getName %) (only-dir (.listFiles source-files))))
 
 (defn langs-sorted-by-words-count []
   (reverse
@@ -55,4 +55,4 @@
                      :lang %
                      :words-count (count (lang-seq %))
                      :description (:description (lang-data %)))
-                  (langs-available)))))
+                  (dictionaries-available (io/file source-dir))))))

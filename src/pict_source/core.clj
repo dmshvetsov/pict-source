@@ -21,6 +21,7 @@
 ;;; Vars
 
 (def export-dir "builds")
+(def dictionaries-dir "resources/dictionary")
 
 ;;; Pages
 
@@ -49,7 +50,7 @@
   (reduce
     (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
     {}
-    (dictionary/langs-available)))
+    (dictionary/dictionaries-available (io/file dictionaries-dir))))
 
 (def site-pages (merge
                     {"/" index "/error/" error}
