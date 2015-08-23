@@ -22,11 +22,15 @@
 
 (def export-dir "builds")
 (def dictionaries-dir "resources/dictionary")
+(def dictionary-seq (file-seq (io/file dictionaries-dir)))
 
 ;;; Pages
 
 (defn index [req]
-  (let [dictionaries (dictionary/langs-sorted-by-words-count)]
+  (let [dictionaries (dictionary/ordered-by-words-count
+                       (dictionary/available-collection (io/file dictionaries-dir))
+                       dictionary-seq
+                       dictionaries-dir)]
     (site/layout req
                  config/site-name
                  config/site-title
@@ -35,7 +39,7 @@
 (defn lang [param-lang req]
   (site/layout req
                config/site-name
-               (:title (dictionary/lang-data param-lang))
+               (:title (dictionary/lang-data param-lang dictionaries-dir))
                (html (pict-source.lang/page (dictionary/words-map param-lang)))))
 
 (defn error [req]
@@ -50,7 +54,7 @@
   (reduce
     (fn [acc param-lang] (into acc {(str "/" param-lang "/") (partial lang param-lang)}))
     {}
-    (dictionary/dictionaries-available (io/file dictionaries-dir))))
+    (dictionary/available-collection (io/file dictionaries-dir))))
 
 (def site-pages (merge
                     {"/" index "/error/" error}

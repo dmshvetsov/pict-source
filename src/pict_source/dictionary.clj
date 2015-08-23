@@ -34,25 +34,30 @@
 (defn group-by-letter [words-seq]
   (group-by :letter words-seq))
 
-(defn lang-seq [lang]
-  (only-lang lang (only-json dictionary-seq)))
+(defn lang-seq [lang dictionary-seq-param] ; WIP
+  (only-lang lang (only-json dictionary-seq-param)))
 
-(defn lang-data [lang]
+(defn lang-data [lang source-dir-param] ; WIP
   (try
-    (parse-stream (io/reader (io/file (str source-dir "/" lang ".json"))) true)
+    (parse-stream (io/reader (io/file (str source-dir-param "/" lang ".json"))) true)
     (catch java.io.FileNotFoundException e (hash-map))))
 
 (defn words-map [lang]
-  (sort (group-by-letter (parse-files (lang-seq lang)))))
+  (sort (group-by-letter (parse-files (lang-seq lang dictionary-seq)))))
 
-(defn dictionaries-available [source-files]
-  (map #(.getName %) (only-dir (.listFiles source-files))))
-
-(defn langs-sorted-by-words-count []
+; TODO: get rid of dictionary-seq-param & source-dir-param param
+(defn ordered-by-words-count [collection dictionary-seq-param source-dir-param] ; WIP
   (reverse
     (sort-by :words-count
+             ; TODO: violates signle responsability
+             ; should only sort
              (map #(hash-map
                      :lang %
-                     :words-count (count (lang-seq %))
-                     :description (:description (lang-data %)))
-                  (dictionaries-available (io/file source-dir))))))
+                     :words-count (count (lang-seq % dictionary-seq-param))
+                     :description (:description (lang-data % source-dir-param)))
+                  collection))))
+
+;;; New version
+
+(defn available-collection [source-files]
+  (map #(.getName %) (only-dir (.listFiles source-files))))
