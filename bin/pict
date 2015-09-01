@@ -6,4 +6,11 @@ FIRST_LETTER="$(echo $WORD | head -c 1)"
 TRANSLATION=$3
 DICTIONARY_PATH=resources/dictionary/
 
-printf "{\n  \"translation\": \"$TRANSLATION\"\n}\n" > $DICTIONARY_PATH/$LANG/$FIRST_LETTER/$WORD.json
+FILE_PATH=$DICTIONARY_PATH/$LANG/$FIRST_LETTER/$WORD.json
+
+if [ ! -f $FILE_PATH ]
+then
+  printf "{\n  \"translation\": \"$TRANSLATION\"\n}\n" > $FILE_PATH
+else
+  echo "File already exists"
+fi
