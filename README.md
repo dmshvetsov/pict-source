@@ -4,7 +4,9 @@ The programmers open dictionary from programmers for culture of using your own s
 
 ## Usage
 
-Just visit [http://pict.divshot.io](http://pict.divshot.io).
+### Online
+
+The project is offline now.
 
 ### Localy
 
